@@ -58,6 +58,35 @@ const WINTER: Session[] = [
       athlete: "Easy one to start the SLRs off right!",
     },
   },
+  {
+    date: 1728415614487,
+    sets: [
+      {
+        repetitions: 3,
+        distances: [300],
+        recovery: [60],
+        times: [49.2, 47.4, 46.8, 48.4, 48.2],
+      },
+      {
+        repetitions: 3,
+        distances: [300],
+        recovery: [60],
+        times: [47.8, 48.3, 48.7, 49.5, 49.7],
+      },
+      {
+        repetitions: 1,
+        distances: [1000],
+        recovery: "n/a",
+        times: [201.2],
+      },
+    ],
+    type: "track",
+    comments: {
+      coach: "",
+      athlete:
+        "The 600s started a bit too fast and slowed after the first effort. I did manage to keep them honest by the end at least. The wind was blowing down the home straight so the 100s felt fast and easy.",
+    },
+  },
 ];
 
 export default { WINTER };
