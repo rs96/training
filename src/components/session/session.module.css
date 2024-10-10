@@ -1,0 +1,35 @@
+.session {
+  display: flex;
+  flex-direction: column;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  margin: 8px 0;
+  padding: 8px;
+}
+
+.set {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.comments {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentPart {
+  width: 50%;
+}
+
+.commentContent {
+  font-size: 0.8rem;
+}
+
+.date {
+  text-align: right;
+}

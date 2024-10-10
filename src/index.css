@@ -11,6 +11,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --grey: #777777;
+
+  --border: 1px solid var(--grey);
+  --border-radius: 5px;
 }
 
 #root {

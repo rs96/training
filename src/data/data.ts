@@ -87,6 +87,29 @@ const WINTER: Session[] = [
         "The 600s started a bit too fast and slowed after the first effort. I did manage to keep them honest by the end at least. The wind was blowing down the home straight so the 100s felt fast and easy.",
     },
   },
+  {
+    date: 1728514800000,
+    sets: [
+      {
+        repetitions: 10,
+        distances: [100],
+        recovery: [45],
+        times: [13.1, 13.3, 13.5, 13.4, 13.4, 13.5, 13.6, 14.0, 13.4, 13.6],
+      },
+      {
+        repetitions: 10,
+        distances: [100],
+        recovery: [45],
+        times: [13.3, 13.3, 13.7, 13.8, 14.0, 14.3, 14.0, 13.5, 13.8, 13.4],
+      },
+    ],
+    type: "track",
+    comments: {
+      coach: "",
+      athlete:
+        "First few reps felt easy. Middle couple felt mentally tough, as lots more to go. Final few hurt a little, not a lot.",
+    },
+  },
 ];
 
-export default { WINTER };
+export { WINTER };
