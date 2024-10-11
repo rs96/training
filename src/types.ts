@@ -7,6 +7,14 @@ export type Effort = {
   time: number;
 };
 
+export enum SessionType {
+  Track = "Track",
+  LongRun = "LongRun",
+  Bike = "Bike",
+  Gym = "Gym",
+  Hill = "Hill",
+}
+
 export type Set = {
   repetitions: number;
   distances: number[];
@@ -14,35 +22,45 @@ export type Set = {
   times: number[];
 };
 
-export type Session =
-  | {
-      type: Type;
-      date: number;
-      sets: Set[];
-      comments: {
-        athlete: string;
-        coach: string;
-      };
-    }
-  | {
-      type: "bike";
-      date: number;
-      average_wattage: number;
-      duration: number;
-      distance: number;
-      average_rpm: number;
-      comments: {
-        athlete: string;
-        coach: string;
-      };
-    }
-  | {
-      type: "long run";
-      date: number;
-      duration: number;
-      distance: number;
-      comments: {
-        athlete: string;
-        coach: string;
-      };
-    };
+export type TrackSession = {
+  type: SessionType.Track;
+  date: number;
+  sets: Set[];
+  comments: {
+    athlete: string;
+    coach: string;
+  };
+};
+export type HillSession = {
+  type: SessionType.Hill;
+  date: number;
+  sets: Set[];
+  comments: {
+    athlete: string;
+    coach: string;
+  };
+};
+
+export type BikeSession = {
+  type: SessionType.Bike;
+  date: number;
+  average_wattage: number;
+  duration: number;
+  distance: number;
+  average_rpm: number;
+  comments: {
+    athlete: string;
+    coach: string;
+  };
+};
+export type RunSession = {
+  type: SessionType.LongRun;
+  date: number;
+  duration: number;
+  distance: number;
+  comments: {
+    athlete: string;
+    coach: string;
+  };
+};
+export type Session = TrackSession | BikeSession | RunSession | HillSession;

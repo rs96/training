@@ -1,4 +1,4 @@
-import { Session } from "../types";
+import { Session, SessionType } from "../types";
 
 const WINTER: Session[] = [
   {
@@ -17,7 +17,7 @@ const WINTER: Session[] = [
         times: [14.2, 14, 13.2, 13.4, 13.1, 13.2],
       },
     ],
-    type: "track",
+    type: SessionType.Track,
     comments: {
       coach: "",
       athlete:
@@ -26,7 +26,7 @@ const WINTER: Session[] = [
   },
   {
     date: 1727823600000,
-    type: "bike",
+    type: SessionType.Bike,
     average_rpm: 91,
     average_wattage: 228,
     distance: 13910,
@@ -42,14 +42,14 @@ const WINTER: Session[] = [
     sets: [
       { repetitions: 8, distances: [270], recovery: "jogback", times: [] },
     ],
-    type: "hill",
+    type: SessionType.Hill,
     comments: {
       coach: "",
       athlete: "",
     },
   },
   {
-    type: "long run",
+    type: SessionType.LongRun,
     date: 1728235191248,
     distance: 9980,
     duration: 2763,
@@ -80,7 +80,7 @@ const WINTER: Session[] = [
         times: [201.2],
       },
     ],
-    type: "track",
+    type: SessionType.Track,
     comments: {
       coach: "",
       athlete:
@@ -103,7 +103,7 @@ const WINTER: Session[] = [
         times: [13.3, 13.3, 13.7, 13.8, 14.0, 14.3, 14.0, 13.5, 13.8, 13.4],
       },
     ],
-    type: "track",
+    type: SessionType.Track,
     comments: {
       coach: "",
       athlete:

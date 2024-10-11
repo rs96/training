@@ -12,9 +12,19 @@
   flex-direction: column;
 }
 
+.setName {
+  font-weight: 600;
+}
+
 .row {
   display: flex;
   flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
 .comments {
@@ -32,4 +42,11 @@
 
 .date {
   text-align: right;
+  font-weight: 600;
+}
+
+.footer {
+  display: flex;
+  margin-top: 8px;
+  /* height: 40px; */
 }
