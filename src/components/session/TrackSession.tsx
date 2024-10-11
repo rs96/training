@@ -6,6 +6,7 @@ import {
   HillSession,
 } from "../../types";
 import styles from "./session.module.css";
+import Pill from "../pill/Pill";
 
 const TrackSession = ({
   session,
@@ -15,7 +16,10 @@ const TrackSession = ({
   const [isShowComments, setIsShowComments] = useState(false);
   return (
     <div className={styles.session}>
-      <div className={styles.date}>{shortDate(session.date)}</div>
+      <div className={styles.ribbon}>
+        <Pill text={session.type} />
+        <div className={styles.date}>{shortDate(session.date)}</div>
+      </div>
       {session.sets.map((s: Set, i) => (
         <div key={i} className={styles.set}>
           <div className={styles.row}>
@@ -42,7 +46,7 @@ const TrackSession = ({
           </div>
         </div>
       ))}
-      <div className={styles.footer}>
+      <div className={styles.ribbon}>
         <button onClick={() => setIsShowComments(!isShowComments)}>
           Comments
         </button>

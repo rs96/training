@@ -3,6 +3,7 @@
   flex-direction: column;
   border: var(--border);
   border-radius: var(--border-radius);
+  background-color: var(--dark-grey);
   margin: 8px 0;
   padding: 8px;
 }
@@ -45,8 +46,12 @@
   font-weight: 600;
 }
 
-.footer {
+.ribbon {
   display: flex;
+}
+.ribbon:first-child {
+  margin-bottom: 8px;
+}
+.ribbon:last-child {
   margin-top: 8px;
-  /* height: 40px; */
 }
