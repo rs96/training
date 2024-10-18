@@ -110,6 +110,51 @@ const WINTER: Session[] = [
         "First few reps felt easy. Middle couple felt mentally tough, as lots more to go. Final few hurt a little, not a lot.",
     },
   },
+  {
+    date: 1728946800000,
+    sets: [
+      {
+        repetitions: 8,
+        distances: [200],
+        recovery: [60],
+        times: [28.8, 28.3, 28.5, 29.2, 30.2, 30.4, 30.5, 32.1],
+      },
+      {
+        repetitions: 1,
+        distances: [1000],
+        recovery: "n/a",
+        times: [194.5],
+      },
+    ],
+    type: SessionType.Track,
+    comments: {
+      coach: "",
+      athlete: "This is ",
+    },
+  },
+  {
+    date: 0,
+    sets: [
+      {
+        repetitions: 1,
+        distances: [600, 500, 500, 400, 400, 400],
+        recovery: "jogback",
+        times: [98.8, 82.0, 83.6, 64.8, 67.3, 63.7],
+      },
+      {
+        repetitions: 3,
+        distances: [100],
+        recovery: "walkback",
+        times: [12.7, 12.4, 12.5],
+      },
+    ],
+    type: SessionType.Track,
+    comments: {
+      athlete:
+        "Harder than it seemed, the jog recoveries were around 3 minutes",
+      coach: "",
+    },
+  },
 ];
 
 export { WINTER };
