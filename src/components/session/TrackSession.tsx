@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { shortDate } from "../../formatters";
+import { formatTime, shortDate } from "../../formatters";
 import {
   Set,
   TrackSession as TrackSessionType,
@@ -37,11 +37,11 @@ const TrackSession = ({
             </div>
             <div className={styles.column}>
               <div>{`Time${s.times.length ? "s" : ""}: ${s.times.map(
-                (t) => ` ${t}`
+                (t) => ` ${formatTime(t)}`
               )}`}</div>
-              <div>{`Average: ${(
+              <div>{`Average: ${formatTime(
                 s.times.reduce((a, c) => a + c, 0) / s.times.length
-              ).toFixed(1)}`}</div>
+              )}`}</div>
             </div>
           </div>
         </div>
