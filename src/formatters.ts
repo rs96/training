@@ -8,5 +8,5 @@ export const formatTime = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
   return `${minutes > 0 ? minutes : ""}${
     minutes > 0 ? ":" : ""
-  }${remainingSeconds}`;
+  }${remainingSeconds.toFixed(1).toString().padStart(4, "0")}`;
 };

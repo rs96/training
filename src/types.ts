@@ -13,11 +13,18 @@ export enum SessionType {
   Bike = "Bike",
   Gym = "Gym",
   Hill = "Hill",
+  Grass = "Grass",
 }
 
 export type Set = {
   repetitions: number;
   distances: number[];
+  recovery: Recovery;
+  times: number[];
+};
+
+export type DurationSet = {
+  repetitions: number;
   recovery: Recovery;
   times: number[];
 };
@@ -31,6 +38,17 @@ export type TrackSession = {
     coach: string;
   };
 };
+
+export type GrassSession = {
+  type: SessionType.Grass;
+  date: number;
+  sets: DurationSet[];
+  comments: {
+    athlete: string;
+    coach: string;
+  };
+};
+
 export type HillSession = {
   type: SessionType.Hill;
   date: number;
@@ -53,6 +71,7 @@ export type BikeSession = {
     coach: string;
   };
 };
+
 export type RunSession = {
   type: SessionType.LongRun;
   date: number;
@@ -63,4 +82,10 @@ export type RunSession = {
     coach: string;
   };
 };
-export type Session = TrackSession | BikeSession | RunSession | HillSession;
+
+export type Session =
+  | TrackSession
+  | BikeSession
+  | RunSession
+  | HillSession
+  | GrassSession;

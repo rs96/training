@@ -133,7 +133,7 @@ const WINTER: Session[] = [
     },
   },
   {
-    date: 0,
+    date: 1729119600000,
     sets: [
       {
         repetitions: 1,
@@ -153,6 +153,21 @@ const WINTER: Session[] = [
       athlete:
         "Harder than it seemed, the jog recoveries were around 3 minutes",
       coach: "",
+    },
+  },
+  {
+    date: 1729292400000,
+    sets: [
+      {
+        repetitions: 2,
+        times: [420, 300, 180],
+        recovery: [90],
+      },
+    ],
+    type: SessionType.Grass,
+    comments: {
+      coach: "",
+      athlete: "",
     },
   },
 ];
