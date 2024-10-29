@@ -209,6 +209,29 @@ const WINTER: Session[] = [
       athlete: "",
     },
   },
+  {
+    date: 1730160000000,
+    sets: [
+      {
+        repetitions: 5,
+        distances: [600],
+        times: [102.3, 100.8, 105.1, 108.1, 107.7],
+        recovery: [90],
+      },
+      {
+        repetitions: 4,
+        distances: [100],
+        times: [13.5, 13.1, 13.2, 12.7],
+        recovery: "walkback",
+      },
+    ],
+    type: SessionType.Track,
+    comments: {
+      coach: "Repetition is good. Good to do the session from last month.",
+      athlete:
+        "Good start, nice to make the 600s really hurt by the end, but not completely dead on my feet so finished alright. Mis-counted on my 100s and only did 4 - but pleased with the pace of them.",
+    },
+  },
 ];
 
 export { WINTER };
