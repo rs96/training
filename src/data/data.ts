@@ -170,6 +170,45 @@ const WINTER: Session[] = [
       athlete: "",
     },
   },
+  {
+    date: 1729465200000,
+    sets: [
+      {
+        repetitions: 6,
+        distances: [300],
+        times: [45.7, 47.6, 47.2, 48.7, 47.3, 47.7],
+        recovery: [60],
+      },
+      {
+        repetitions: 3,
+        distances: [100],
+        times: [12.7, 12.7, 12.4],
+        recovery: [180],
+      },
+    ],
+    type: SessionType.Track,
+    comments: {
+      coach: "The altitude (in Madrid) will lend itself well to do 6-8 300s",
+      athlete:
+        "Tired from the plane journey and a 5am start. The first rep was great, then it got hard. Great track and lovely evening.",
+    },
+  },
+  {
+    date: 1729983600000,
+    sets: [
+      {
+        repetitions: 5,
+        distances: [340],
+        times: [67.8, 65.3, 75.8, 79.3, 77.6],
+        recovery: [180],
+      },
+    ],
+    type: SessionType.Hill,
+    comments: {
+      coach: "",
+      athlete: "",
+    },
+  },
 ];
 
 export { WINTER };
