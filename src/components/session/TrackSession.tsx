@@ -17,7 +17,7 @@ const TrackSession = ({
   return (
     <div className={styles.session}>
       <div className={styles.ribbon}>
-        <Pill text={session.type} />
+        <Pill text={session.type} session={session.type} />
         <div className={styles.date}>{shortDate(session.date)}</div>
       </div>
       {session.sets.map((s: Set, i) => (

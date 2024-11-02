@@ -40,12 +40,18 @@ const WINTER: Session[] = [
   {
     date: 1727910000000,
     sets: [
-      { repetitions: 8, distances: [270], recovery: "jogback", times: [] },
+      {
+        repetitions: 7,
+        distances: [270],
+        recovery: "jogback",
+        times: [57.2, 55.3, 57.4, 56.9, 54.3, 53.8, 53.7],
+      },
     ],
     type: SessionType.Hill,
     comments: {
       coach: "",
-      athlete: "",
+      athlete:
+        "First time trying the longer upslope hill in Hawkesworth Wood. Good surface and slightly undulating incline, but not steep enough to build much lactic. Hill elevation change: 78 -> 89",
     },
   },
   {
@@ -206,7 +212,8 @@ const WINTER: Session[] = [
     type: SessionType.Hill,
     comments: {
       coach: "",
-      athlete: "",
+      athlete:
+        "Much steeper hill this time. Killed me quickly in 3 reps. Almost walking at the end of the last efforts, so probably take it slower next time. Total elevation change: 42 -> 81",
     },
   },
   {
@@ -231,6 +238,23 @@ const WINTER: Session[] = [
       athlete:
         "Good start, nice to make the 600s really hurt by the end, but not completely dead on my feet so finished alright. Mis-counted on my 100s and only did 4 - but pleased with the pace of them.",
     },
+  },
+  {
+    date: 1730505600000,
+    sets: [
+      {
+        repetitions: 3,
+        times: [300],
+        recovery: [90],
+      },
+      {
+        repetitions: 3,
+        times: [180],
+        recovery: [90],
+      },
+    ],
+    type: SessionType.Grass,
+    comments: { athlete: "", coach: "" },
   },
 ];
 
