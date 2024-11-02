@@ -2,7 +2,7 @@ import { SessionType } from "../../types";
 import styles from "./pill.module.css";
 
 const colours: Record<SessionType, string> = {
-  [SessionType.Grass]: "#00ff00",
+  [SessionType.Grass]: "#3f9b0b",
   [SessionType.Track]: "#dd1111",
   [SessionType.Bike]: "",
   [SessionType.Gym]: "",

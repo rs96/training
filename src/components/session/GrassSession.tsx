@@ -1,18 +1,10 @@
 import { useState } from "react";
-import { formatTime, shortDate } from "../../formatters";
-import {
-  Set,
-  TrackSession as TrackSessionType,
-  HillSession,
-} from "../../types";
+import { shortDate } from "../../formatters";
+import { DurationSet, GrassSession as GrassSessionType } from "../../types";
 import styles from "./session.module.css";
 import Pill from "../pill/Pill";
 
-const TrackSession = ({
-  session,
-}: {
-  session: TrackSessionType | HillSession;
-}) => {
+const GrassSession = ({ session }: { session: GrassSessionType }) => {
   const [isShowComments, setIsShowComments] = useState(false);
   return (
     <div className={styles.session}>
@@ -20,7 +12,7 @@ const TrackSession = ({
         <Pill text={session.type} session={session.type} />
         <div className={styles.date}>{shortDate(session.date)}</div>
       </div>
-      {session.sets.map((s: Set, i) => (
+      {session.sets.map((s: DurationSet, i) => (
         <div key={i} className={styles.set}>
           <div className={styles.row}>
             {session.sets.length > 1 && (
@@ -29,19 +21,8 @@ const TrackSession = ({
           </div>
           <div className={styles.row}>
             <div className={styles.column}>
-              <div className={styles.row}>{`Distance${
-                s.distances.length > 1 ? "s" : ""
-              } ${s.distances}`}</div>
               <div className={styles.row}>{`Repetitions ${s.repetitions}`}</div>
               <div className={styles.row}>{`Recovery ${s.recovery}s`}</div>
-            </div>
-            <div className={styles.column}>
-              <div>{`Time${s.times.length ? "s" : ""}: ${s.times.map(
-                (t) => ` ${formatTime(t)}`
-              )}`}</div>
-              <div>{`Average: ${formatTime(
-                s.times.reduce((a, c) => a + c, 0) / s.times.length
-              )}`}</div>
             </div>
           </div>
         </div>
@@ -71,4 +52,4 @@ const TrackSession = ({
   );
 };
 
-export default TrackSession;
+export default GrassSession;

@@ -1,4 +1,5 @@
 import styles from "./app.module.css";
+import GrassSession from "./components/session/GrassSession";
 import TrackSession from "./components/session/TrackSession";
 // import Table from "./components/table/Table";
 import { WINTER } from "./data/data";
@@ -11,11 +12,20 @@ const App = () => (
       {WINTER.filter(
         (session) =>
           session.type === SessionType.Track ||
-          session.type === SessionType.Hill
+          session.type === SessionType.Hill ||
+          session.type === SessionType.Grass
       )
         .sort((a, b) => b.date - a.date)
         .map((session, i) => (
-          <TrackSession key={i} session={session} />
+          <>
+            {(session.type === SessionType.Track ||
+              session.type === SessionType.Hill) && (
+              <TrackSession key={i} session={session} />
+            )}
+            {session.type === SessionType.Grass && (
+              <GrassSession key={i} session={session} />
+            )}
+          </>
         ))}
     </div>
   </>
