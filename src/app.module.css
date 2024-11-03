@@ -4,12 +4,32 @@
   height: 8vh;
 }
 
+.pages {
+  display: flex;
+  flex-direction: row;
+  height: 3vh;
+}
+
+.pages > div {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: var(--dark-grey);
+  padding: 0px 5px;
+  margin: 0 5px;
+  cursor: pointer;
+  max-height: 3vh;
+  min-height: calc(1rem + 5px);
+  height: calc(1rem + 5px);
+}
+
 .mainColumn {
   width: 50%;
   min-width: min(100vw, 800px);
   max-width: 1400px;
-  height: 92vh;
+  height: calc(89vh - 8px);
   margin: 0 auto;
+  padding: 5px 2px;
+  overflow-y: scroll;
 }
 
 .table {

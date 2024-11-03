@@ -4,7 +4,7 @@
   border: var(--border);
   border-radius: var(--border-radius);
   background-color: var(--dark-grey);
-  margin: 8px 0;
+  margin-bottom: 5px;
   padding: 8px;
 }
 
