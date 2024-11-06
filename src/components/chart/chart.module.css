@@ -1,6 +1,13 @@
-.chart {
+.container {
   height: 100%;
   width: 100%;
   border: var(--border);
   border-radius: var(--border-radius);
+}
+
+.chart {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--border-radius);
+  background-color: var(--dark-grey);
 }
