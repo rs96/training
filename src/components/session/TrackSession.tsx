@@ -44,6 +44,12 @@ const TrackSession = ({
               )}`}</div>
             </div>
           </div>
+          {session.recoveries.length > 0 && i < session.recoveries.length && (
+            <div className={styles.column}>
+              <div className={styles.setName}>{`Rest ${i + 1}`}</div>
+              {`${session.recoveries[i]}s`}
+            </div>
+          )}
         </div>
       ))}
       <div className={styles.ribbon}>

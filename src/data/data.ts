@@ -17,6 +17,7 @@ const WINTER: Session[] = [
         times: [14.2, 14, 13.2, 13.4, 13.1, 13.2],
       },
     ],
+    recoveries: [240],
     type: SessionType.Track,
     comments: {
       coach: "",
@@ -47,6 +48,7 @@ const WINTER: Session[] = [
         times: [57.2, 55.3, 57.4, 56.9, 54.3, 53.8, 53.7],
       },
     ],
+    recoveries: [],
     type: SessionType.Hill,
     comments: {
       coach: "",
@@ -86,6 +88,7 @@ const WINTER: Session[] = [
         times: [201.2],
       },
     ],
+    recoveries: [240, 240],
     type: SessionType.Track,
     comments: {
       coach: "",
@@ -109,6 +112,7 @@ const WINTER: Session[] = [
         times: [13.3, 13.3, 13.7, 13.8, 14.0, 14.3, 14.0, 13.5, 13.8, 13.4],
       },
     ],
+    recoveries: [300],
     type: SessionType.Track,
     comments: {
       coach: "",
@@ -132,6 +136,7 @@ const WINTER: Session[] = [
         times: [194.5],
       },
     ],
+    recoveries: [240],
     type: SessionType.Track,
     comments: {
       coach: "",
@@ -154,6 +159,7 @@ const WINTER: Session[] = [
         times: [12.7, 12.4, 12.5],
       },
     ],
+    recoveries: [240],
     type: SessionType.Track,
     comments: {
       athlete:
@@ -192,6 +198,7 @@ const WINTER: Session[] = [
         recovery: [180],
       },
     ],
+    recoveries: [180],
     type: SessionType.Track,
     comments: {
       coach: "The altitude (in Madrid) will lend itself well to do 6-8 300s",
@@ -209,6 +216,7 @@ const WINTER: Session[] = [
         recovery: [180],
       },
     ],
+    recoveries: [],
     type: SessionType.Hill,
     comments: {
       coach: "",
@@ -232,6 +240,7 @@ const WINTER: Session[] = [
         recovery: "walkback",
       },
     ],
+    recoveries: [240],
     type: SessionType.Track,
     comments: {
       coach: "Repetition is good. Good to do the session from last month.",
@@ -254,6 +263,32 @@ const WINTER: Session[] = [
       },
     ],
     type: SessionType.Grass,
+    comments: { athlete: "", coach: "" },
+  },
+  {
+    date: 1730764800000,
+    sets: [
+      {
+        repetitions: 4,
+        distances: [200],
+        times: [27.78, 29.5, 27.83, 27.91],
+        recovery: "jogback",
+      },
+      {
+        repetitions: 4,
+        distances: [200],
+        times: [25.15, 28.3, 28.08, 28.17],
+        recovery: "jogback",
+      },
+      {
+        repetitions: 4,
+        distances: [200],
+        times: [25.17, 27.32, 28.49, 28.21],
+        recovery: "jogback",
+      },
+    ],
+    recoveries: [300, 300],
+    type: SessionType.Track,
     comments: { athlete: "", coach: "" },
   },
 ];

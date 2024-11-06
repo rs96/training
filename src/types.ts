@@ -23,6 +23,8 @@ export type Set = {
   times: number[];
 };
 
+// export type SessionPart = Set | DurationSet | number
+
 export type DurationSet = {
   repetitions: number;
   recovery: Recovery;
@@ -33,6 +35,7 @@ export type TrackSession = {
   type: SessionType.Track;
   date: number;
   sets: Set[];
+  recoveries: number[];
   comments: {
     athlete: string;
     coach: string;
@@ -53,6 +56,7 @@ export type HillSession = {
   type: SessionType.Hill;
   date: number;
   sets: Set[];
+  recoveries: number[];
   comments: {
     athlete: string;
     coach: string;
