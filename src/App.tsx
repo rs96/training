@@ -4,8 +4,30 @@ import GrassSession from "./components/session/GrassSession";
 import TrackSession from "./components/session/TrackSession";
 // import Table from "./components/table/Table";
 import { WINTER } from "./data/data";
-import { SessionType } from "./types";
+import {
+  GrassSession as GrassSessionType,
+  HillSession,
+  Session,
+  SessionType,
+  TrackSession as TrackSessionType,
+} from "./types";
 import Chart from "./components/chart/Chart";
+
+const mapSessionToComponent = (session: Session) =>
+  ({
+    [SessionType.Track]: <TrackSession session={session as TrackSessionType} />,
+    [SessionType.Hill]: <TrackSession session={session as HillSession} />,
+    [SessionType.Grass]: <GrassSession session={session as GrassSessionType} />,
+    [SessionType.Bike]: (
+      <TrackSession session={session as TrackSessionType | HillSession} />
+    ),
+    [SessionType.Gym]: (
+      <TrackSession session={session as TrackSessionType | HillSession} />
+    ),
+    [SessionType.LongRun]: (
+      <TrackSession session={session as TrackSessionType | HillSession} />
+    ),
+  }[session.type]);
 
 const App = () => {
   const [page, setPage] = useState("sessions");
@@ -30,15 +52,7 @@ const App = () => {
           )
             .sort((a, b) => b.date - a.date)
             .map((session, i) => (
-              <>
-                {(session.type === SessionType.Track ||
-                  session.type === SessionType.Hill) && (
-                  <TrackSession key={i} session={session} />
-                )}
-                {session.type === SessionType.Grass && (
-                  <GrassSession key={i} session={session} />
-                )}
-              </>
+              <div key={i}>{mapSessionToComponent(session)}</div>
             ))}
         {page === "trends" && <Chart />}
       </div>
