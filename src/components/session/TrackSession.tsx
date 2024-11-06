@@ -52,7 +52,7 @@ const TrackSession = ({
           )}
         </div>
       ))}
-      <div className={styles.ribbon}>
+      <div className={styles.div}>
         <button onClick={() => setIsShowComments(!isShowComments)}>
           Comments
         </button>
