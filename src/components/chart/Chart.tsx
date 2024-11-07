@@ -8,9 +8,6 @@ import { Set } from "../../types";
 
 const plotMargins = { x: 35, y: 30 };
 
-// const getSessionMaxPerformance = (session: TrackSession) =>{
-//   return session.sets.map((set) => set.times)}
-
 type DataPoint = {
   date: number;
   performance: number;
@@ -18,17 +15,14 @@ type DataPoint = {
 };
 
 const getDistancesFromSession = (sessions: TrackSession[]) => {
-  const allSets = sessions.reduce(
-    (acc: Set[], cur) => [...acc, ...cur.sets],
-    []
-  );
-  // const distances = sessions.flatMap((s) => s.set)
-  const t = allSets.flatMap((s) => s.distances);
-  return { max: Math.max(...t), min: Math.min(...t) };
+  const allDistances = sessions
+    .reduce((acc: Set[], cur) => [...acc, ...cur.sets], [])
+    .flatMap((s) => s.distances);
+  return { max: Math.max(...allDistances), min: Math.min(...allDistances) };
 };
 
-const getDatePerformancesArray = (sessions: TrackSession[]) => {
-  return sessions.reduce((acc: DataPoint[], cur) => {
+const getDatePerformancesArray = (sessions: TrackSession[]) =>
+  sessions.reduce((acc: DataPoint[], cur) => {
     const allReps = cur.sets.reduce((acc: DataPoint[], set) => {
       let toAdd: DataPoint[] = [];
       for (let i = 0; i < set.repetitions; i++) {
@@ -42,7 +36,6 @@ const getDatePerformancesArray = (sessions: TrackSession[]) => {
     }, []);
     return [...allReps, ...acc];
   }, []);
-};
 
 const Chart = () => {
   useEffect(() => {
@@ -61,15 +54,11 @@ const Chart = () => {
     const dateMax = d3.max(sessions, (d: TrackSession) => d.date) as number;
     const dateMin = d3.min(sessions, (d: TrackSession) => d.date) as number;
     const distanceRange = getDistancesFromSession(sessions);
-    // d3.max(
-    //   performances,
-    //   (d: TrackSession) => d. as number
-    // ) as number;
 
     const datePerformanceArray = getDatePerformancesArray(sessions);
 
     // Find data ranges
-    const performanceMin = 0;
+    const performanceMin = 0; // zero is good for plotting for now
     // d3.min(
     //   datePerformanceArray,
     //   (d: DataPoint) => d.performance
@@ -88,10 +77,6 @@ const Chart = () => {
       .scaleLinear()
       .domain([performanceMin, performanceMax])
       .range([height - plotMargins.y, plotMargins.y]);
-    // const yScaleDistance = d3
-    //   .scaleLinear()
-    //   .domain([distanceRange.min, distanceRange.max])
-    //   .range([height - plotMargins.y, 0]);
     const radiusScaleDistance = d3
       .scaleLinear()
       .domain([distanceRange.min, distanceRange.max])
@@ -106,7 +91,6 @@ const Chart = () => {
       .ticks(ticksForXAxis)
       .tickFormat((d, i) => (i % 2 ? shortDate(d as number) : ""));
     const yAxis = d3.axisLeft(yScalePerformance).ticks(5);
-    // const yAxisRight = d3.axisLeft(yScaleDistance).ticks(5);
 
     // add axes
     graph
@@ -122,23 +106,11 @@ const Chart = () => {
       )
       .attr("fill", "white")
       .text("Time");
-    // graph
-    //   .append("text")
-    //   .attr(
-    //     "transform",
-    //     `translate(${width - plotMargins.x / 2},${height / 2}) rotate(-90)`
-    //   )
-    //   .attr("fill", "white")
-    //   .text("Distance");
 
     graph
       .append("g")
       .attr("transform", `translate(${plotMargins.x},0)`)
       .call(yAxis);
-    // graph
-    //   .append("g")
-    //   .attr("transform", `translate(${width - plotMargins.x},0)`)
-    //   .call(yAxisRight);
 
     graph
       .append("g")
