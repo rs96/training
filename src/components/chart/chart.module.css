@@ -11,3 +11,14 @@
   border-radius: var(--border-radius);
   background-color: var(--dark-grey);
 }
+
+.tooltip {
+  background: #eeeeee;
+  pointer-events: none;
+  border-radius: var(--border-radius);
+  padding: 5px;
+  position: relative;
+  top: 500px;
+  left: 500px;
+  z-index: 1;
+}

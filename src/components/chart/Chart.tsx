@@ -112,6 +112,11 @@ const Chart = () => {
       .attr("transform", `translate(${plotMargins.x},0)`)
       .call(yAxis);
 
+    // graph.append("div").attr("class", "tooltip");
+
+    const tooltip = d3.select(`.${styles.tooltip}`);
+
+    // Plot data points
     graph
       .append("g")
       .selectAll(".performance")
@@ -123,12 +128,33 @@ const Chart = () => {
       .attr("cy", (d) => yScalePerformance(d.performance))
       .attr("class", "performance")
       .attr("fill", "white")
+      .on("mouseenter", function (event, d) {
+        const [mx, my] = d3.pointer(event);
+        const tooltipText = `
+        <strong>Distance</strong>: ${d.distance} 
+        <br> 
+        <strong>Performance</strong>: ${d.performance}`;
+
+        return tooltip
+          .style("visibility", "visible")
+          .style("top", `${my - height}px`)
+          .style("left", `${mx}px`)
+          .html(tooltipText);
+      })
+      .on("mousemove", function (event, d) {
+        const [mx, my] = d3.pointer(event);
+        return tooltip
+          .style("top", `${my - height}px`)
+          .style("left", `${mx}px`);
+      })
+      .on("mouseout", () => tooltip.style("visibility", "hidden").html())
       .exit()
       .remove();
   };
   return (
     <div className={styles.container} id="chart-container">
       <svg className={styles.chart} id="chart"></svg>
+      <div className={styles.tooltip}>Test</div>
     </div>
   );
 };
