@@ -13,12 +13,13 @@
 }
 
 .tooltip {
-  background: #eeeeee;
-  pointer-events: none;
+  background: var(--background-color);
+  border: var(--border);
   border-radius: var(--border-radius);
-  padding: 5px;
+  pointer-events: none;
+  padding: 0 5px;
   position: relative;
-  top: 500px;
-  left: 500px;
+  top: 0;
+  left: 0;
   z-index: 1;
 }

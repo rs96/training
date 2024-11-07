@@ -3,7 +3,7 @@ import styles from "./chart.module.css";
 import * as d3 from "d3";
 import { WINTER } from "../../data/data";
 import { useEffect } from "react";
-import { shortDate } from "../../formatters";
+import { formatTime, shortDate } from "../../formatters";
 import { Set } from "../../types";
 
 const plotMargins = { x: 35, y: 30 };
@@ -42,7 +42,6 @@ const Chart = () => {
     if (WINTER.length) {
       drawGraph(WINTER.filter((session) => session.type === SessionType.Track));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   });
   const drawGraph = (sessions: TrackSession[]) => {
     // @ts-ignore
@@ -112,8 +111,6 @@ const Chart = () => {
       .attr("transform", `translate(${plotMargins.x},0)`)
       .call(yAxis);
 
-    // graph.append("div").attr("class", "tooltip");
-
     const tooltip = d3.select(`.${styles.tooltip}`);
 
     // Plot data points
@@ -128,20 +125,20 @@ const Chart = () => {
       .attr("cy", (d) => yScalePerformance(d.performance))
       .attr("class", "performance")
       .attr("fill", "white")
-      .on("mouseenter", function (event, d) {
+      .on("mouseenter", (event, d) => {
         const [mx, my] = d3.pointer(event);
-        const tooltipText = `
-        <strong>Distance</strong>: ${d.distance} 
+        const tooltipHtml = `
+        <strong>Distance</strong>: ${`${d.distance}m`} 
         <br> 
-        <strong>Performance</strong>: ${d.performance}`;
+        <strong>Performance</strong>: ${formatTime(d.performance)}`;
 
         return tooltip
           .style("visibility", "visible")
           .style("top", `${my - height}px`)
           .style("left", `${mx}px`)
-          .html(tooltipText);
+          .html(tooltipHtml);
       })
-      .on("mousemove", function (event, d) {
+      .on("mousemove", (event) => {
         const [mx, my] = d3.pointer(event);
         return tooltip
           .style("top", `${my - height}px`)
@@ -154,7 +151,7 @@ const Chart = () => {
   return (
     <div className={styles.container} id="chart-container">
       <svg className={styles.chart} id="chart"></svg>
-      <div className={styles.tooltip}>Test</div>
+      <div className={styles.tooltip}></div>
     </div>
   );
 };
