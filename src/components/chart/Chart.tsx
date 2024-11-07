@@ -135,14 +135,14 @@ const Chart = () => {
         return tooltip
           .style("visibility", "visible")
           .style("top", `${my - height}px`)
-          .style("left", `${mx}px`)
+          .style("left", `${mx + 160 > width ? mx - 170 : mx}px`)
           .html(tooltipHtml);
       })
       .on("mousemove", (event) => {
         const [mx, my] = d3.pointer(event);
         return tooltip
           .style("top", `${my - height}px`)
-          .style("left", `${mx}px`);
+          .style("left", `${mx + 160 > width ? mx - 170 : mx}px`);
       })
       .on("mouseout", () => tooltip.style("visibility", "hidden").html())
       .exit()
