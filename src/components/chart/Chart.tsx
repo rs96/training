@@ -24,7 +24,7 @@ const getDistancesFromSession = (sessions: TrackSession[]) => {
 const getDatePerformancesArray = (sessions: TrackSession[]) =>
   sessions.reduce((acc: DataPoint[], cur) => {
     const allReps = cur.sets.reduce((acc: DataPoint[], set) => {
-      let toAdd: DataPoint[] = [];
+      const toAdd: DataPoint[] = [];
       for (let i = 0; i < set.repetitions * set.distances.length; i++) {
         toAdd.push({
           date: cur.date,
@@ -36,6 +36,57 @@ const getDatePerformancesArray = (sessions: TrackSession[]) =>
     }, []);
     return [...allReps, ...acc];
   }, []);
+
+const getDatesDistancesObject = (data: DataPoint[]) =>
+  data.reduce((acc: Record<number, number[]>, cur) => {
+    if (acc[cur.date] === undefined) {
+      return { ...acc, [cur.date]: [cur.distance] };
+    }
+    return acc[cur.date].includes(cur.distance)
+      ? acc
+      : { ...acc, [cur.date]: [...acc[cur.date], cur.distance] };
+  }, {});
+
+const getAverageRepetitionTimeData = (
+  data: DataPoint[],
+  date: number,
+  distance: number
+) => {
+  const totals = data.reduce((acc: number[], cur) => {
+    if (cur.date === date && cur.distance === distance) {
+      acc.push(cur.performance);
+    }
+    return acc;
+  }, []);
+  return {
+    date,
+    distance,
+    performance: totals.reduce((acc, cur) => acc + cur, 0) / totals.length,
+  };
+};
+
+const getAveragePerformancePerDistance = (data: DataPoint[]) => {
+  const performancesPerDistance = data.reduce(
+    (acc: Record<number, number[]>, cur) => {
+      if (acc[cur.distance] === undefined) {
+        return { ...acc, [cur.distance]: [cur.performance] };
+      }
+      return {
+        ...acc,
+        [cur.distance]: [...acc[cur.distance], cur.performance],
+      };
+    },
+    {}
+  );
+  return Object.keys(performancesPerDistance).reduce((acc, cur) => {
+    return {
+      ...acc,
+      [cur]:
+        performancesPerDistance[Number(cur)].reduce((a, b) => a + b, 0) /
+        performancesPerDistance[Number(cur)].length,
+    };
+  }, {});
+};
 
 const Chart = () => {
   useEffect(() => {
@@ -54,18 +105,34 @@ const Chart = () => {
     const dateMin = d3.min(sessions, (d: TrackSession) => d.date) as number;
     const distanceRange = getDistancesFromSession(sessions);
 
-    const datePerformanceArray = getDatePerformancesArray(sessions);
+    // calculate graph data points
+    const data = getDatePerformancesArray(sessions);
+    const datesDistances = getDatesDistancesObject(data);
+    const repAvgsPerDistancePerDate = Object.keys(datesDistances).reduce(
+      (averages: DataPoint[], date) => {
+        datesDistances[Number(date)].forEach((distance) => {
+          const averageRepTimeForDate = getAverageRepetitionTimeData(
+            data,
+            Number(date),
+            distance
+          );
+          averages.push(averageRepTimeForDate);
+        });
+        return averages;
+      },
+      []
+    );
+    const test = getAveragePerformancePerDistance(data);
+
+    console.log({ test });
 
     // Find data ranges
     const performanceMin = 0; // zero is good for plotting for now
     // d3.min(
-    //   datePerformanceArray,
+    //   data,
     //   (d: DataPoint) => d.performance
     // )!;
-    const performanceMax = d3.max(
-      datePerformanceArray,
-      (d: DataPoint) => d.performance
-    )!;
+    const performanceMax = d3.max(data, (d: DataPoint) => d.performance)!;
 
     // define our scaling functions
     const xScale = d3
@@ -80,6 +147,10 @@ const Chart = () => {
       .scaleLinear()
       .domain([distanceRange.min, distanceRange.max])
       .range([1.5, 6]);
+    const radiusScaleDistanceAverages = d3
+      .scaleLinear()
+      .domain([distanceRange.min, distanceRange.max])
+      .range([10, 15]);
 
     const graph = d3.select("#chart");
     graph.selectAll("*").remove();
@@ -117,7 +188,7 @@ const Chart = () => {
     graph
       .append("g")
       .selectAll(".performance")
-      .data(datePerformanceArray)
+      .data(data)
       .enter()
       .append("circle")
       .attr("r", (d) => radiusScaleDistance(d.distance))
@@ -145,6 +216,21 @@ const Chart = () => {
           .style("left", `${mx + 160 > width ? mx - 170 : mx}px`);
       })
       .on("mouseout", () => tooltip.style("visibility", "hidden").html())
+      .exit()
+      .remove();
+
+    // Plot data points
+    graph
+      .append("g")
+      .selectAll(".averages")
+      .data(repAvgsPerDistancePerDate)
+      .enter()
+      .append("circle")
+      .attr("r", (d) => radiusScaleDistanceAverages(d.distance))
+      .attr("cx", (d) => xScale(d.date))
+      .attr("cy", (d) => yScalePerformance(d.performance))
+      .attr("class", "performance")
+      .attr("fill", "#33ff3355")
       .exit()
       .remove();
   };
