@@ -25,7 +25,7 @@ const getDatePerformancesArray = (sessions: TrackSession[]) =>
   sessions.reduce((acc: DataPoint[], cur) => {
     const allReps = cur.sets.reduce((acc: DataPoint[], set) => {
       let toAdd: DataPoint[] = [];
-      for (let i = 0; i < set.repetitions; i++) {
+      for (let i = 0; i < set.repetitions * set.distances.length; i++) {
         toAdd.push({
           date: cur.date,
           performance: set.times[i],
