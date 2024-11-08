@@ -291,6 +291,20 @@ const WINTER: Session[] = [
     type: SessionType.Track,
     comments: { athlete: "", coach: "" },
   },
+  {
+    date: 1730937600000,
+    sets: [
+      {
+        distances: [300],
+        repetitions: 10,
+        recovery: [60],
+        times: [43.7, 44.9, 45.4, 46.1, 48.6, 49.5, 50.3, 50.3, 48.7, 46.2],
+      },
+    ],
+    recoveries: [],
+    type: SessionType.Track,
+    comments: { athlete: "", coach: "" },
+  },
 ];
 
 export { WINTER };
