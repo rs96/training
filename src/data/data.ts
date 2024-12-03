@@ -357,6 +357,52 @@ const WINTER: Session[] = [
     type: SessionType.Grass,
     comments: { athlete: "", coach: "" },
   },
+  {
+    date: 1733011200000,
+    sets: [
+      {
+        distances: [600, 400, 400, 400, 400, 400],
+        repetitions: 3,
+        recovery: [75],
+        times: [97.3, 69.1, 65.5, 63.5, 61.7, 64.2],
+      },
+    ],
+    recoveries: [],
+    type: SessionType.Track,
+    comments: { athlete: "", coach: "" },
+  },
+  {
+    date: 1733184000000,
+    sets: [
+      {
+        distances: [400],
+        repetitions: 1,
+        recovery: [45],
+        times: [56.9, 68.0],
+      },
+      {
+        distances: [400],
+        repetitions: 1,
+        recovery: [45],
+        times: [61.0, 70.8],
+      },
+      {
+        distances: [400],
+        repetitions: 1,
+        recovery: [45],
+        times: [63.6, 74.2],
+      },
+      {
+        distances: [400],
+        repetitions: 1,
+        recovery: [45],
+        times: [65.4, 72.4, 74.2],
+      },
+    ],
+    recoveries: [240],
+    type: SessionType.Track,
+    comments: { athlete: "", coach: "" },
+  },
 ];
 
 export { WINTER };
