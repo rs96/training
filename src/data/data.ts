@@ -362,7 +362,7 @@ const WINTER: Session[] = [
     sets: [
       {
         distances: [600, 400, 400, 400, 400, 400],
-        repetitions: 3,
+        repetitions: 1,
         recovery: [75],
         times: [97.3, 69.1, 65.5, 63.5, 61.7, 64.2],
       },
@@ -396,10 +396,10 @@ const WINTER: Session[] = [
         distances: [400],
         repetitions: 1,
         recovery: [45],
-        times: [65.4, 72.4, 74.2],
+        times: [65.4, 72.4],
       },
     ],
-    recoveries: [240],
+    recoveries: [240, 240, 240, 240],
     type: SessionType.Track,
     comments: { athlete: "", coach: "" },
   },
