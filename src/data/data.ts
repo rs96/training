@@ -403,6 +403,34 @@ const WINTER: Session[] = [
     type: SessionType.Track,
     comments: { athlete: "", coach: "" },
   },
+  {
+    date: 1733529600000,
+    sets: [
+      {
+        distances: [200],
+        repetitions: 10,
+        recovery: "walkback",
+        times: [39.7, 38.0, 37.1, 37.4, 37.2, 36.4, 36.9, 37.9, 38.9, 39.2],
+      },
+    ],
+    recoveries: [],
+    type: SessionType.Hill,
+    comments: { athlete: "", coach: "" },
+  },
+  {
+    date: 1733788800000,
+    sets: [
+      {
+        distances: [400, 400, 400, 400, 400],
+        repetitions: 1,
+        recovery: [180],
+        times: [61.8, 59.0, 58.1, 60.9, 58.9],
+      },
+    ],
+    recoveries: [],
+    type: SessionType.Track,
+    comments: { athlete: "", coach: "" },
+  },
 ];
 
 export { WINTER };
